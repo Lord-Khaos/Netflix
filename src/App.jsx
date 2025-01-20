@@ -3,6 +3,7 @@ import MovieList from "./component/MovieList";
 import Filter from "./component/Filter";
 import AddMovieForm from "./component/AddMovieForm";
 import "./index.css";
+import { useNavigate } from 'react-router-dom';
 
 const App = () => {
   const [movies, setMovies] = useState([
@@ -36,12 +37,17 @@ const App = () => {
     setFilteredMovies([...movies, newMovie]);
   };
 
+  
+    const handleGoToAbout = () => {
+      navigate('/movie'); // Navigate to the "About" page
+    };
   return (
     <div className="container">
       <h1 className="header">Netflix</h1>
       <Filter onFilter={handleFilter} />
       <AddMovieForm onAdd={handleAddMovie} />
       <MovieList movies={filteredMovies} />
+      <button onClick={()=>{handleGoToAbout()}}>Trailer</button>
     </div>
   );
 };
